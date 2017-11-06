@@ -232,16 +232,16 @@ That's good, but it would be nice to _simultaneously_ apply the directive and se
 
 <code-example path="attribute-directives/src/app/app.component.html" linenums="false" title="src/app/app.component.html (color)" region="color"></code-example>
 
-The `[myHighlight]` attribute binding both applies the highlighting directive to the `<p>` element
+The `[appHighlight]` attribute binding both applies the highlighting directive to the `<p>` element
 and sets the directive's highlight color with a property binding.
-You're re-using the directive's attribute selector (`[myHighlight]`) to do both jobs.
+You're re-using the directive's attribute selector (`[appHighlight]`) to do both jobs.
 That's a crisp, compact syntax.
 
-You'll have to rename the directive's `highlightColor` property to `myHighlight` because that's now the color property binding name.
+You'll have to rename the directive's `highlightColor` property to `appHighlight` because that's now the color property binding name.
 
 <code-example path="attribute-directives/src/app/highlight.directive.2.ts" linenums="false" title="src/app/highlight.directive.ts (renamed to match directive selector)" region="color-2"></code-example>
 
-This is disagreeable. The word, `myHighlight`, is a terrible property name and it doesn't convey the property's intent.
+This is disagreeable. The word, `appHighlight`, is a terrible property name and it doesn't convey the property's intent.
 
 {@a input-alias}
 
@@ -254,7 +254,7 @@ Restore the original property name and specify the selector as the alias in the 
 <code-example path="attribute-directives/src/app/highlight.directive.ts" linenums="false" title="src/app/highlight.directive.ts (color property with alias)" region="color"></code-example>
 
 _Inside_ the directive the property is known as `highlightColor`.
-_Outside_ the directive, where you bind to it, it's known as `myHighlight`.
+_Outside_ the directive, where you bind to it, it's known as `appHighlight`.
 
 You get the best of both worlds: the property name you want and the binding syntax you want:
 
@@ -308,7 +308,7 @@ then with the `defaultColor`, and falls back to "red" if both properties are und
 
 <code-example path="attribute-directives/src/app/highlight.directive.ts" linenums="false" title="src/app/highlight.directive.ts (mouse-enter)" region="mouse-enter"></code-example>
 
-How do you bind to a second property when you're already binding to the `myHighlight` attribute name?
+How do you bind to a second property when you're already binding to the `appHighlight` attribute name?
 
 As with components, you can add as many directive property bindings as you need by stringing them along in the template.
 The developer should be able to write the following template HTML to both bind to the `AppComponent.color`
@@ -398,6 +398,6 @@ Now apply that reasoning to the following example:
   The template and its component trust each other.
   The `color` property doesn't require the `@Input` decorator.
 
-* The `myHighlight` property on the left refers to an _aliased_ property of the `HighlightDirective`,
+* The `appHighlight` property on the left refers to an _aliased_ property of the `HighlightDirective`,
   not a property of the template's component. There are trust issues.
   Therefore, the directive property must carry the `@Input` decorator.
