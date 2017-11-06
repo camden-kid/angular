@@ -33,7 +33,7 @@ An attribute directive minimally requires building a controller class annotated 
 the attribute.
 The controller class implements the desired directive behavior.
 
-This page demonstrates building a simple _myHighlight_ attribute
+This page demonstrates building a simple _appHighlight_ attribute
 directive to set an element's background color
 when the user hovers over that element. You can apply it like this:
 
@@ -64,14 +64,14 @@ as an argument.
 the HTML in the template that is associated with the directive.
 The [CSS selector for an attribute](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors)
 is the attribute name in square brackets.
-Here, the directive's selector is `[myHighlight]`.
-Angular locates all elements in the template that have an attribute named `myHighlight`.
+Here, the directive's selector is `[appHighlight]`.
+Angular locates all elements in the template that have an attribute named `appHighlight`.
 
 <div class="l-sub-section">
 
 ### Why not call it "highlight"?
 
-Though *highlight* is a more concise name than *myHighlight* and would work,
+Though *highlight* is a more concise name than *appHighlight* and would work,
 a best practice is to prefix selector names to ensure
 they don't conflict with standard HTML attributes.
 This also reduces the risk of colliding with third-party directive names.
@@ -112,11 +112,11 @@ Now reference this template in the `AppComponent`:
 
 Next, add an `import` statement to fetch the `Highlight` directive and
 add that class to the `declarations` NgModule metadata. This way Angular
-recognizes the directive when it encounters `myHighlight` in the template.
+recognizes the directive when it encounters `appHighlight` in the template.
 
 <code-example path="attribute-directives/src/app/app.module.ts" title="src/app/app.module.ts"></code-example>
 
-Now when the app runs, the `myHighlight` directive highlights the paragraph text.
+Now when the app runs, the `appHighlight` directive highlights the paragraph text.
 
 <figure>
   <img src="generated/images/guide/attribute-directives/first-highlight.png" alt="First Highlight">
@@ -132,7 +132,7 @@ Open the console in the browser tools and look for an error like this:
 
 <code-example format="nocode">
   EXCEPTION: Template parse errors:
-    Can't bind to 'myHighlight' since it isn't a known property of 'p'.
+    Can't bind to 'appHighlight' since it isn't a known property of 'p'.
 </code-example>
 
 Angular detects that you're trying to bind to *something* but it can't find this directive
@@ -142,7 +142,7 @@ Angular knows it can apply the directive to components declared in this module.
 
 </div>
 
-To summarize, Angular found the `myHighlight` attribute on the `<p>` element.
+To summarize, Angular found the `appHighlight` attribute on the `<p>` element.
 It created an instance of the `HighlightDirective` class and
 injected a reference to the `<p>` element into the directive's constructor
 which sets the `<p>` element's background style to yellow.
@@ -151,7 +151,7 @@ which sets the `<p>` element's background style to yellow.
 
 ## Respond to user-initiated events
 
-Currently, `myHighlight` simply sets an element color.
+Currently, `appHighlight` simply sets an element color.
 The directive could be more dynamic.
 It could detect when the user mouses into or out of the element
 and respond by setting or clearing the highlight color.
